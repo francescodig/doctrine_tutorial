@@ -1,17 +1,47 @@
 <?php
 
+namespace App\Entity;
+use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection; 
+
+/**
+ * @ORM\Entity
+ * @ORM\Table(name="prodotto")
+ */
+
+
 class EProdotto {
 
+    /**
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     * @ORM\Column(type="integer")
+     */
     private $id;
+    /**
+     * @ORM\Column(type="string")
+     */
     private $nome;
+    /**
+     * @ORM\Column(type="string")
+     */
     private $descrizione;
+    /**
+     * @ORM\Column(type="decimal", scale=2)
+     */
     private $costo;
+    /**
+     * @ORM\ManyToMany(targetEntity="App\Entity\EOrdine", mappedBy="prodotti")
+     */
+    private $ordini;
 
     public function __construct($id ,$nome, $descrizione, $costo) {
         $this->id = uniqid();
         $this->nome = $nome;
         $this->descrizione = $descrizione;
         $this->costo = $costo;
+        $this->ordini = new ArrayCollection();
     }
 
     // Getters

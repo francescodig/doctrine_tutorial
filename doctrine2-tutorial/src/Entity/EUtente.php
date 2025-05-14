@@ -3,6 +3,10 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
+
+
 
 /**
  * @ORM\Entity
@@ -37,6 +41,11 @@ class EUtente
      */
     private $password;
 
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\EOrdine", mappedBy="utente")
+     */
+    private $ordini;
+
     // Costruttore
     public function __construct(string $nome, string $cognome, string $email, string $password)
     {
@@ -44,6 +53,7 @@ class EUtente
         $this->cognome = $cognome;
         $this->email = $email;
         $this->password = $password;
+        $this->ordini = new ArrayCollection();
     }
 
     // Getter e Setter
@@ -90,6 +100,10 @@ class EUtente
     public function setPassword(string $password): void
     {
         $this->password = $password;
+    }
+    public function getOrdini(): Collection
+    {
+    return $this->ordini;
     }
 }
 ?>
