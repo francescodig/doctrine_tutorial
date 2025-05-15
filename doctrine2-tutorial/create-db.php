@@ -8,6 +8,11 @@ use App\Entity\EProdotto;
 use App\Entity\ESegnalazione;
 use App\Entity\ERecensione;
 use App\Entity\ECarta_credito;
+use App\Entity\EIndirizzo;
+use App\Entity\ECliente;
+use App\Entity\ERider;
+use App\Entity\ECuoco;
+
 
 
 $schemaTool = new SchemaTool($entityManager);
@@ -18,6 +23,10 @@ $classes = [
     $entityManager->getClassMetadata(ESegnalazione::class),
     $entityManager->getClassMetadata(ERecensione::class),
     $entityManager->getClassMetadata(ECarta_credito::class),
+    $entityManager->getClassMetadata(EIndirizzo::class),
+    $entityManager->getClassMetadata(ECliente::class),
+    $entityManager->getClassMetadata(ERider::class),
+    $entityManager->getClassMetadata(ECuoco::class),
     
 
 ];

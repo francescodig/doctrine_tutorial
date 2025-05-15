@@ -11,6 +11,13 @@ use Doctrine\Common\Collections\Collection;
 /**
  * @ORM\Entity
  * @ORM\Table(name="utente")
+ * @ORM\InheritanceType("JOINED")
+ * @ORM\DiscriminatorColumn(name="ruolo", type="string")
+ * @ORM\DiscriminatorMap({
+ *     "cliente" = "App\Entity\ECliente",
+ *     "rider" = "App\Entity\ERider",
+ *     "cuoco" = "App\Entity\ECuoco"
+ * })
  */
 class EUtente
 {
@@ -41,10 +48,6 @@ class EUtente
      */
     private $password;
 
-    /**
-     * @ORM\OneToMany(targetEntity="App\Entity\EOrdine", mappedBy="utente")
-     */
-    private $ordini;
 
     // Costruttore
     public function __construct(string $nome, string $cognome, string $email, string $password)
@@ -53,7 +56,6 @@ class EUtente
         $this->cognome = $cognome;
         $this->email = $email;
         $this->password = $password;
-        $this->ordini = new ArrayCollection();
     }
 
     // Getter e Setter
@@ -100,10 +102,6 @@ class EUtente
     public function setPassword(string $password): void
     {
         $this->password = $password;
-    }
-    public function getOrdini(): Collection
-    {
-    return $this->ordini;
     }
 }
 ?>

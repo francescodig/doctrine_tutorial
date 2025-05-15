@@ -1,10 +1,7 @@
 <?php
 
-
-
 use App\Entity\ECarta_credito;
 use App\Entity\EUtente;
-use Doctrine\Common\Collections\ArrayCollection;
 
 // Recupero EntityManager da bootstrap.php
 $entityManager = require_once "bootstrap.php";
@@ -15,25 +12,26 @@ if (!$utente) {
     die("Utente con ID 1 non trovato.\n");
 }
 
-// Crea una nuova carta di credito
-$numeroCarta = "1234567890123456"; // Modifica con il numero della carta
-$nomeCarta = "Visa";
-$dataScadenza = new DateTime("2026-12-31"); // Modifica con la data di scadenza
-$cvv = "123"; // Modifica con il CVV
-$nomeIntestatario = "John Doe"; // Modifica con il nome dell'intestatario
+// Dati delle carte da generare
+$carteDati = [
+    ["1234567890123456", "Visa", "2026-12-31", "123", "John Doe"],
+    ["2345678901234567", "MasterCard", "2027-05-31", "456", "John Doe"],
+    ["3456789012345678", "American Express", "2025-09-30", "789", "John Doe"],
+    ["4567890123456789", "Maestro", "2028-03-31", "012", "John Doe"],
+];
 
-$cartaCredito = new ECarta_credito(
-    $numeroCarta,
-    $nomeCarta,
-    $dataScadenza,
-    $cvv,
-    $nomeIntestatario,
-    $utente
-);
+foreach ($carteDati as [$numero, $nome, $scadenza, $cvv, $intestatario]) {
+    $carta = new ECarta_credito(
+        $numero,
+        $nome,
+        new DateTime($scadenza),
+        $cvv,
+        $intestatario,
+        $utente
+    );
+    $entityManager->persist($carta);
+}
 
-// Salva la carta di credito nel database
-$entityManager->persist($cartaCredito);
 $entityManager->flush();
 
-echo "Carta di credito inserita con successo con numero " . $cartaCredito->getNumeroCarta() . "\n";
-?>
+echo "4 carte di credito inserite con successo per l'utente con ID " . $utente->getId() . "\n";

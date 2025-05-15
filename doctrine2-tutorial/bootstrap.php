@@ -10,7 +10,7 @@ $config = Setup::createAnnotationMetadataConfiguration(
     $isDevMode,
     null,
     null,
-    false // 👈 imposta a false per evitare l'uso di SimpleAnnotationReader
+    false 
 );
 
 

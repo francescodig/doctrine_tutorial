@@ -42,12 +42,12 @@ class ECarta_credito{
     private $utente;
 
 
-    public function __construct($numero_carta, $nome_carta, $data_scadenza, $cvv, $nome_intestatario, $utente) {
-        $this->numeroCarta = $numero_carta;
-        $this->nomeCarta = $nome_carta;
-        $this->dataScadenza = $data_scadenza;
+    public function __construct($numeroCarta, $nomeCarta, $dataScadenza, $cvv, $nomeIntestatario, $utente) {
+        $this->numeroCarta = $numeroCarta;
+        $this->nomeCarta = $nomeCarta;
+        $this->dataScadenza = $dataScadenza;
         $this->cvv = $cvv;
-        $this->nomeIntestatario = $nome_intestatario;
+        $this->nomeIntestatario = $nomeIntestatario;
         $this->utente = $utente;
     }
 
@@ -73,24 +73,24 @@ class ECarta_credito{
     }
 
     //Setter
-    public function setNumeroCarta($numero_carta){
-        $this->numeroCarta = $numero_carta;
+    public function setNumeroCarta($numeroCarta){
+        $this->numeroCarta = $numeroCarta;
     }
 
     public function setNominativo($nomeCarta){
-        $this->nome_carta = $nomeCarta;
+        $this->nomeCarta = $nomeCarta;
     }
 
-    public function setDataScadenza($data_scadenza){
-        $this->dataScadenza = $data_scadenza;
+    public function setDataScadenza($dataScadenza){
+        $this->dataScadenza = $dataScadenza;
     }
 
     public function setCvv($cvv){
         $this->cvv = $cvv;
     }
     
-    public function setNomeIntestatario($nome_intestatario){
-        $this->nomeIntestatario = $nome_intestatario;
+    public function setNomeIntestatario($nomeIntestatario){
+        $this->nomeIntestatario = $nomeIntestatario;
     }
 
     
