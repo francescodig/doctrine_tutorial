@@ -35,8 +35,7 @@ class ERecensione{
      */
     private $utente;
 
-    public function __construct($id, $descrizione, $voto, $data, $utente){
-        $this->id = $id;
+    public function __construct($descrizione, $voto, $data, $utente){
         $this->descrizione = $descrizione;
         $this->voto = $voto;
         $this->data = $data;

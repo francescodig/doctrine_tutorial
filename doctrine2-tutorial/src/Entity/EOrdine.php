@@ -52,8 +52,7 @@ class EOrdine {
      */
     private $prodotti;
 
-    public function __construct($id, $prodotti, $note, $dataEsecuzione, $dataRicezione, $costo) {
-        $this->id = uniqid();
+    public function __construct($prodotti, $note, $dataEsecuzione, $dataRicezione, $costo) {
         $this->prodotti = $prodotti;
         $this->note = $note;
         $this->dataEsecuzione = $dataEsecuzione;

@@ -35,12 +35,18 @@ class EProdotto {
      * @ORM\ManyToMany(targetEntity="App\Entity\EOrdine", mappedBy="prodotti")
      */
     private $ordini;
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\ECategoria", inversedBy="piatti")
+     * @ORM\JoinColumn(name="categoria_id", referencedColumnName="id", nullable=false)
+     */
+    private $categoria;
 
-    public function __construct($id ,$nome, $descrizione, $costo) {
-        $this->id = uniqid();
+    public function __construct($nome, $descrizione, $costo, $categoria) {
+
         $this->nome = $nome;
         $this->descrizione = $descrizione;
         $this->costo = $costo;
+        $this->categoria = $categoria; 
         $this->ordini = new ArrayCollection();
     }
 
@@ -60,6 +66,9 @@ class EProdotto {
     public function getCosto() {
         return $this->costo;
     }
+    public function getCategoria() {
+        return $this->categoria;
+    }
 
     // Setters
     public function setId($id) {
@@ -76,6 +85,9 @@ class EProdotto {
     
     public function setCosto($costo) {
         $this->costo = $costo;
+    }
+    public function setCategoria($categoria) {
+        $this->categoria = $categoria;
     }
 
 }

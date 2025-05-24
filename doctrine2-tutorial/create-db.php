@@ -12,7 +12,8 @@ use App\Entity\EIndirizzo;
 use App\Entity\ECliente;
 use App\Entity\ERider;
 use App\Entity\ECuoco;
-
+use App\Entity\ECategoria;
+use App\Entity\EElenco_prodotti;
 
 
 $schemaTool = new SchemaTool($entityManager);
@@ -27,7 +28,8 @@ $classes = [
     $entityManager->getClassMetadata(ECliente::class),
     $entityManager->getClassMetadata(ERider::class),
     $entityManager->getClassMetadata(ECuoco::class),
-    
+    $entityManager->getClassMetadata(ECategoria::class),
+    $entityManager->getClassMetadata(EElenco_prodotti::class),
 
 ];
 
